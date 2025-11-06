@@ -1,0 +1,95 @@
+a).Raj and Raju are thick friends. They decided to play a game . Raju is an excellent guy with 
+good communication skills. Raj decided to test his friend raju with few tounge
+twisters. Raj will utter some sentence to his friend. Upon listening to Raj now raju needs to 
+write those sentences told by his friend.Then raj will utter a word. The task is replace all the 
+words that has been uttered by raj in the sentence with a special character #. Kindly help raju 
+and raj to complete their game. Refer sample input and output for more details
+Aim: To Solve programming problems by implementing necessary control
+statements Algorithm:
+Step 1:-Start.
+Step 2:-Take integer variable X.
+Step 3:- Divide the variable X with (X-1 to 2).
+Step 4:- If A is divisible by any value (X-1 to 2) 
+it is not prime.Step 5:-Print result .
+PROGRAM:
+#include <stdio.h> 
+#include <string.h>
+int main() {
+char
+sentence[100]; 
+char replace_char;
+printf("Enter a sentence: "); 
+fgets(sentence, 100, stdin); 
+printf("Enter a character to
+replace: "); scanf("%c", 
+&replace_char);
+for (int i = 0; i < strlen(sentence);
+i++) { if (sentence[i] == 
+replace_char) {
+sentence[i] = '#';
+}
+}
+printf("Modified sentence: %s", OUTPUT:
+Enter a sentence: veltech university is in chennai 
+Enter a character to replace: u
+Modified sentence: veltech #niversity is in Chennai
+b) Write a program that generates a random number and asks the user to guess 
+what the number is. If the user's guess is higher than the random number, the 
+program should display "Too high, try again." If the user's guess is lower than the
+random number, the program should display "Too low, try again." The program 
+should use a loop that repeats until the user correctly guesses the random number.
+Algorithm:
+1. Generate a random number between a specified range.
+2. Initialize a loop that will run until the user correctly guesses the random
+number.
+3. Ask the user to enter a guess for the random number.
+4. Check if the guess is equal to the random number. If it is, exit the 
+loop and print a message congratulating the user.
+5. If the guess is higher than the random number, print a message saying "Too
+high, try again".
+6. If the guess is lower than the random number, print a message saying "Too
+low, try again".
+7. Repeat steps 3-6 until the user correctly guesses the random number.
+8. End the program.
+PROGRAM:
+#include 
+<stdio.h> 
+#include
+<stdlib.h> 
+#include 
+<time.h>
+int main() { 
+srand(time
+(0));
+int randomNumber =
+rand() % 100 + 1; int 
+guess;
+do {
+printf("Guess the number
+between 1 and 100: "); 
+scanf("%d", &guess);
+if (guess > 
+randomNumber) { printf("Too high, try
+again.\n");
+} else if (guess <
+randomNumber) { 
+printf("Too low, try 
+again.\n");
+}
+} while (guess != randomNumber);
+printf("Congratulations! You guessed the number %d.\n",
+randomNumber); return 0;
+}
+OUTPUT:
+Guess the number between 1 and
+100: 80 Too low, try again.
+Guess the number between 1
+and 100: 90 Too high, try again.
+Guess the number between 1
+and 100: 81 Too low, try again.
+Guess the number between 1
+and 100: 82 Too low, try again.
+Guess the number between 1 and 100: 83 
+Congratulations! You guessed the number
+83.
+Result: Thus, the program is written and executed successfully.
