@@ -1,0 +1,98 @@
+Task 9: String Processing- Basics, String functions (based on different language), String operations, Two algorithms for string pattern matching - Naïve approach and Robin karp approach.-CO3-K3
+Merge two strings
+Given two strings S1 and S2 as input, the task is to merge them alternatively i.e. the first character of S1 then the first character of S2 and so on till the strings end.
+NOTE: Add the whole string if other string is empty. Input:
+The first line of input contains an integer T denoting the number of test cases. Then T test cases follow. Each test case contains two strings S1 and S2.
+Output:
+For each test case, in a new line, print the merged string. Constraints:
+1 <= T <= 100
+1 <= |S1|, |S2| <= 104
+Example:
+Input:
+2
+
+Hello Bye abc def Output:
+HBeylelo adbecf
+Algorithm:
+Read the first string S1
+Read the second string S2
+Initialize two variables i and j to 0
+Initialize an empty string mergedStr
+Repeat the following steps while i is less than the length of S1 and j is less than the length of S2:
+Append the i-th character of S1 to mergedStr
+Append the j-th character of S2 to mergedStr
+Increment i by 1
+Increment j by 1
+If i is less than the length of S1, append the remaining characters of S1 to mergedStr
+If j is less than the length of S2, append the remaining characters of S2 to mergedStr
+Print mergedSt
+Program:
+#include <stdio.h> #include <string.h>
+
+int main() { int t;
+scanf("%d", &t); // read the number of test cases
+
+while (t--) {
+char s1[10005], s2[10005], ans[20005];
+scanf("%s %s", s1, s2); // read the two strings
+
+int len1 = strlen(s1), len2 = strlen(s2); int i, j, k;
+i = j = k = 0;
+// merge the strings alternatively while (i < len1 && j < len2) {
+ans[k++] = s1[i++]; ans[k++] = s2[j++];
+}
+// add the remaining characters from s1 or s2 while (i < len1) ans[k++] = s1[i++];
+while (j < len2) ans[k++] = s2[j++];
+
+ans[k] = '\0'; // add null terminator to the merged string
+
+printf("%s\n", ans); // print the merged string
+}
+
+return 0;
+}
+
+Input:
+2
+Hello Bye abc def Output:
+HBeylelo adbecf
+Taking input
+You are given two inputs: a(integer), and b(string). You need to take the input and print a and b separated by a space.
+Input Format:
+First line of input conatins number of testcases T. T testcases follow. For each testcase, there will be one line of input containing a and b.
+Output Format:
+For each testcase, print a and b separated by a space. Your Task:
+This is a function problem. You need to write the command to take input of a and b inside the function inputData()
+Taking input Constraints: 1 <= T <= 10
+1 <= a <= 106
+Input: 2
+5
+
+Hello 7
+Geeks Output:
+5 Hello
+7 Geek
+Algorithm:
+Read the number of testcases T from the input.
+Loop through T testcases
+Read the integer a from input.
+Read the string b from input using fgets() or scanf("%[^\n]s", b).
+Print the values of a and b separated by a space using printf() function.
+End loop.
+Program:
+#include <iostream> using namespace std;
+void inputData() { int t, a;
+string b; cin >> t; while(t--) {
+cin >> a >> b;
+cout << a << " " << b << endl;
+}
+}
+
+int main() { inputData(); return 0;
+}
+Input: 2
+5
+Hello 7
+Geeks Output: 5 Hello
+7 Geek
+Result: Thus the program is executed and verified successfully.
