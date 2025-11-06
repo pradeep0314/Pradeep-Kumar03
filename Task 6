@@ -1,0 +1,118 @@
+Task 6-Basic Number Theory - 2
+Euclidean
+Given four integers x1, y1, x2 and y2, which represents two coordinates (x1, y1) and (x2, y2) of a two-
+dimensional graph. The task is to find the Euclidean distance between these two points.
+Euclidean distance between two points is the length of a straight line drawn between those two given 
+points.
+Examples:
+Input: x1, y1 = (3, 4)
+x2, y2 = (7, 7)
+Output: 5
+Input: x1, y1 = (3, 4)
+x2, y2 = (4, 3)
+Output: 1.41421
+Approach: Since the Euclidean distance is nothing but the straight line distance between two given 5. Calculate the square of dy and store it in a variable dy2.
+6. Calculate the sum of dx2 and dy2 and store it in a variable d2.
+7. Calculate the square root of d2 and store it in a variable distance.
+8. Print the value of distance as output.
+9. End the program.
+Program:
+#include <stdio.h> 
+#include <math.h>
+int main() {
+int x1, y1, x2, y2; 
+double distance;
+printf("Enter x1 and y1: "); 
+scanf("%d %d", &x1, &y1); 
+printf("Enter x2 and y2: "); 
+scanf("%d %d", &x2, &y2);
+distance = sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
+printf("The Euclidean distance between (%d, %d) and (%d, %d) is %lf\n", x1, y1, x2, y2, distance);
+return 0;
+}
+OUTPUT:
+Input: x1, y1 = (3, 4)
+x2, y2 = (7, 7)
+Output: 5
+Input: x1, y1 = (3, 4)
+x2, y2 = (4, 3)
+Output: 1.41421
+GCD
+Given an array of size N of integers with each element denoted as array[i] . In this problem we are 
+given a parameter K and we are supposed to find the size of the largest contiguous subarray whose 
+GCD is atleast K If there is no subarray whose GCD is atleast K , print "0".
+INPUT
+The first line contains 2 integers N and K the size of the array and the parameter as described in the 
+problem statement The second line containts N space separated integers denoting the array.
+OUTPUT
+Print a single integer in a single line denoting the maximum contiguous subarray size whose GCD is 
+atleast K.
+Contraints
+1 <= N <= 500000
+1 <= array[i] , K <= 1000000
+Sample Input 
+5 9 10 20 5 15 45
+Algorithm:
+1. Read the value of N and the array of integers array[] of size N.
+2. Read the value of K.
+3. Initialize a variable max_len to 0, which will store the length of the largest contiguous subarray 
+whose GCD is at least K.
+4. Initialize two variables, left and right, to 0, which represent the left and right indices of the 
+current subarray.
+5. Initialize a variable current_gcd to array[0], which represents the GCD of the current subarray.
+6. Start a loop with variable i from 1 to N-1: a. Update the current_gcd to be the GCD of the 
+current_gcd and array[i]. b. While the current_gcd is greater than or equal to K: i. Update 
+max_len to be the maximum of max_len and the difference between right and left plus 1. ii. 
+Update current_gcd to be the GCD of current_gcd and array[left]. iii. Increment left by 1. c. 
+Increment right by 1.
+7. If max_len is still 0, print "0" as there is no subarray whose GCD is at least K.
+8. Otherwise, print the value of max_len as the size of the largest contiguous subarray whose 
+GCD is at least K.
+9. End the program.
+Program:
+#include <stdio.h> 
+int gcd(int a, int b) {
+if (b == 0) { 
+return a;
+} else {
+return gcd(b, a % b);
+}
+}
+int main() { 
+int n, k;
+scanf("%d %d", &n, &k);
+int arr[n];
+for (int i = 0; i < n; i++) { 
+scanf("%d", &arr[i]);
+}
+int maxLength = 0; 
+int length = 0;
+for (int i = 0; i < n; i++) { 
+int currentGcd = arr[i]; 
+if (currentGcd >= k) {
+length = 1;
+} else {
+continue;
+}
+for (int j = i + 1; j < n; j++) { 
+currentGcd = gcd(currentGcd, arr[j]); if (currentGcd >= k) {
+length++;
+} else {
+break;
+}
+}
+if (length > maxLength) { 
+maxLength = length;
+}
+}
+printf("%d\n", maxLength); 
+return 0;
+}
+OUTPUT:
+Sample Input
+5 9
+10 20 5 15 45
+Sample Output 
+2
+Result: Thus the program is executed and verified successfully.
+xecuted and verified successfully.
