@@ -1,0 +1,99 @@
+Task 8 : Arrays -Introduction, memory allocation (with row/column major), operations (insert, delete, search) sorted and unsorted array, suffix array, subsequence and subarray. -CO3-K3
+Raman loves Mathematics a lot. One day his maths teacher gave him an interesting problem. He was given an array 'A' consisting of 'n' integers, he was needed to find the maximum value Input:
+First line of input contains an integer T denoting number of test cases.
+Each test case contains two lines, first line contains integer n where n is the number of elements in array
+Second line contains n space separated integers Ai. Output:
+Print the maximum value of the above give expression, for each test case separated in a new line
+Sample Input:
+2
+3
+1 2 5
+4
+1 2 3 4
+Sample output:
+5
+4
+Algorithm:
+Read the number of elements n in the array A
+Read the array A
+Initialize max_val to -1
+Repeat the following steps for all possible pairs (i, j) where 1 <= i < j <= n:
+Calculate the value of the expression (A[i] * A[j]) + (i - j)
+If the calculated value is greater than max_val, set max_val to the calculated value
+Print the value of max_val for the current test case
+End Program: #include <stdio.h>
+
+void rotate(int arr[], int n, int k) { k = k % n;
+int temp[k];
+for (int i = 0; i < k; i++) { temp[i] = arr[n - k + i];
+}
+for (int i = n - 1; i >= k; i--) {
+arr[i] = arr[i - k];
+}
+for (int i = 0; i < k; i++) { arr[i] = temp[i];
+}
+}
+
+int main() { int n, k;
+printf("Enter the size of the array: "); scanf("%d", &n);
+int arr[n];
+printf("Enter the array elements: "); for (int i = 0; i < n; i++) {
+scanf("%d", &arr[i]);
+}
+printf("Enter the number of positions to rotate: "); scanf("%d", &k);
+rotate(arr, n, k);
+printf("The rotated array is: "); for (int i = 0; i < n; i++) {
+printf("%d ", arr[i]);
+}
+return 0;
+}
+OUTPUT:
+Enter the size of the array: 10
+1Enter the array elements: 1 2 3 4 5 6 7 8 9 0 Enter the number of positions to rotate: 5 The rotated array is: 6 7 8 9 0 1 2 3 4 5 Problem:
+Students have become secret admirers of grade. They find the course exciting and the professors amusing. After a superb Mid Semester examination its now time for the results. The TAs have released the marks of students in the form of an array, where arr[i] represents the marks of the ith student.
+Since you are a curious kid, you want to find all the marks that are not smaller than those on its right side in the array.
+Input Format
+The first line of input will contain a single integer n denoting the number of students. The next line will contain n space separated integers representing the marks of students. Output Format
+Output all the integers separated in the array from left to right that are not smaller than those on its right side.
+
+Constraints
+1 <= n <= 1000000
+0 <= arr[i] <= 10000
+Sample input:
+4
+5 7 3 6
+Sample output:
+7
+Algorithm:
+Read the input values of n and the array arr[].
+Initialize a variable max as the first element of the array arr[0].
+Traverse the array arr[] from right to left and for each element arr[i] do the following: a. If arr[i] >= max, then set max = arr[i] and print arr[i].
+End.
+
+Program:
+#include <stdio.h>
+
+int maxSubArray(int arr[], int n) { int max_so_far = arr[0];
+int max_ending_here = arr[0];
+
+for (int i = 1; i < n; i++) {
+max_ending_here = (arr[i] > max_ending_here + arr[i]) ? arr[i] : max_ending_here + arr[i]; max_so_far = (max_so_far > max_ending_here) ? max_so_far : max_ending_here;
+}
+
+return max_so_far;
+}
+int main() { int n;
+printf("Enter the size of array: "); scanf("%d", &n);
+int arr[n];
+printf("Enter the elements of array: "); for (int i = 0; i < n; i++) {
+scanf("%d", &arr[i]);
+}
+int max_sum = maxSubArray(arr, n);
+printf("The maximum subarray sum is: %d\n", max_sum);
+
+return 0;
+}
+
+OUTPUT:
+Enter the size of array: 5
+Enter the elements of array: 1 2 3 4 5
